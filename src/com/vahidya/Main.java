@@ -33,7 +33,10 @@ public class Main {
             switch (words.get(0).toLowerCase()){
                 case "help" :
                     System.out.println("Available commands:");
-                    System.out.println("  get   - get events of github user");
+                    System.out.println("  change-user : set your github username");
+                    System.out.println("  events : display events of github for your username");
+                    System.out.println("  repos: display repositories of github for your username ");
+                    System.out.println("  exit : exit the application");
                     break;
                 case "change-user":
                     if(words.size()==2){
@@ -56,11 +59,31 @@ public class Main {
                             System.out.println("No data received. Please check the username.");
                         }
                     }else{
-                        System.out.println("get parameter is just github user name");
+                        System.out.println("command is not correct!please use help command.");
                     }
                     break;
+                case "repos" :
+                    if(words.size()==1){
+                        String apiUrl=GITHUB_BASE_URL+"users/"+userName+"/repos";
+                        System.out.println(apiUrl);
+                        String jsonResponse=fetchGithubDAta(apiUrl);
+                        // Parse and display repository information
+                        if (jsonResponse != null) {
+                            parseAndDisplayRepositories(jsonResponse, userName);
+                        } else {
+                            System.out.println("No data received. Please check the username.");
+                        }
+                    }else{
+                        System.out.println("command is not correct!please use help command.");
+                    }
+                    break;
+                case "exit":
+                    System.out.println("Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+                    break;
                 default:
-                    System.out.println("command\'parameter is not correct");
+                     System.out.println("command is not correct!please use help command.");
             }
         }
     }
@@ -78,7 +101,7 @@ public class Main {
             System.out.print("Repository: " + repoName +" ");
             System.out.print("Created At: " + createdAt+" ");
         }
-        System.out.println("-------------------------------------");
+        System.out.println("\n-------------------------------------");
     }
 
     private static void parseAndDisplayRepositories(String jsonResponse, String username) throws Exception {
@@ -88,16 +111,17 @@ public class Main {
 
         if (rootNode.isArray() && rootNode.size() > 0) {
             System.out.println("\nRepositories for user: " + username);
-
+            System.out.println("-------------------------------------");
             for (JsonNode repoNode : rootNode) {
                 String repoName = repoNode.get("name").asText();
                 String description = repoNode.get("description").asText(null);
                 String htmlUrl = repoNode.get("html_url").asText();
 
-                System.out.println("\nRepository: " + repoName);
-                System.out.println("Description: " + (description != null ? description : "No description provided."));
-                System.out.println("URL: " + htmlUrl);
+                System.out.print("\nRepository: " + repoName+" ");
+                System.out.print("Description: " + (description != null ? description : "No description provided.")+" ");
+                System.out.print("URL: " + htmlUrl);
             }
+            System.out.println("\n-------------------------------------");
         } else {
             System.out.println("No repositories found for user: " + username);
         }
@@ -119,7 +143,6 @@ public class Main {
             System.out.println("Failed to fetch events. HTTP Response Code: " + httpResponse.statusCode());
             return null;
         }
-
     }
 
     private static List<String> convertInputToWords(String input) {

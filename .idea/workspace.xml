@@ -7,14 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4985c28-4ff9-460f-849e-517fce83db2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Github_Activity_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Github_Activity_jar/Github-Activity.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Github-Activity/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Github-Activity/com/vahidya/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Github-Activity/com/vahidya/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/vahidya/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/vahidya/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1732353895788</updated>
-      <workItem from="1732353920242" duration="17625000" />
+      <workItem from="1732353920242" duration="17812000" />
     </task>
     <servers />
   </component>
